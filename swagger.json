@@ -1,0 +1,1343 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Livquik",
+    "description": "This is a By now pay latter project",
+    "contact": {
+      "email": ""
+    },
+    "version": "1.0.0",
+    "termsOfService": "http://swagger.io/terms/",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json",
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/user/addRole": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "User"
+        ],
+        "description": "Add user role",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Role name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Failed"
+          }
+        }
+      }
+    },
+
+    "/user/addUser": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "User"
+        ],
+        "description": "Add user",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "fullName",
+            "in": "formData",
+            "description": "user full name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "user email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mobileNo",
+            "in": "formData",
+            "description": "user mobile number",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "role_id",
+            "in": "formData",
+            "description": "user role id from userRole table",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Failed"
+          }
+        }
+      }
+    },
+
+    "/user/login": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "User"
+        ],
+        "description": "user login via email and password",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "login Success"
+          },
+          "400": {
+            "description": "Wrong email or password."
+          }
+        }
+      }
+    },
+
+    "/user/getUserList": {
+      "get": {
+        "deprecated": false,
+        "tags": [
+          "User"
+        ],
+        "description": "Get user list by super admin",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "Access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/signup": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "User signup",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accType",
+            "in": "formData",
+            "description": "Account type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fullName",
+            "in": "formData",
+            "description": "Full name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Email",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Password",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "countryCode",
+            "in": "formData",
+            "description": "Country Code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "mobileNo",
+            "in": "formData",
+            "description": "Mobile number",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "login Success"
+          },
+          "400": {
+            "description": "Wrong email or password."
+          }
+        }
+      }
+    },
+
+    "/merchant/verifyOtp": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Verify otp",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "merchant Id",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "emailOtp",
+            "in": "formData",
+            "description": "User email otp",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "mobileOtp",
+            "in": "formData",
+            "description": "User mobile otp",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/resendOtp": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Resend otp",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "merchant Id",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/getAllMerchant": {
+      "get": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Get all merchant list",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page no",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Submitted or Rejected",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search by fullName, email, mobile",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/getMerchantDetail/{merchantId}": {
+      "get": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Get all merchant list",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "path",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/addMerchant": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Add new merchant",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "fullName",
+            "in": "formData",
+            "description": "Merchant full name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Merchant email",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Password",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "countryCode",
+            "in": "formData",
+            "description": "Country Code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "mobile",
+            "in": "formData",
+            "description": "Mobile number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "businessName",
+            "in": "formData",
+            "description": "Business name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "GSTno",
+            "in": "formData",
+            "description": "GST number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "PANno",
+            "in": "formData",
+            "description": "PAN number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "websiteLink",
+            "in": "formData",
+            "description": "Website link",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "businessAddress",
+            "in": "formData",
+            "description": "Business Address",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "entityType",
+            "in": "formData",
+            "description": "Entity type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "businessAs",
+            "in": "formData",
+            "description": "Business as",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "PGcategory",
+            "in": "formData",
+            "description": "PG category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "MCCcode",
+            "in": "formData",
+            "description": "MCC code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "businessType",
+            "in": "formData",
+            "description": "Business Type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "riskType",
+            "in": "formData",
+            "description": "Risk type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "turnover",
+            "in": "formData",
+            "description": "Turnover",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "in": "formData",
+            "description": "State",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "GSTaddress",
+            "in": "formData",
+            "description": "GST address",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "remarks",
+            "in": "formData",
+            "description": "Remarks",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/getCommisionDetails/{merchantId}": {
+      "get": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Get merchant commision detail by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "path",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/addCommisionDetails": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Add merchant commision detail by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "paymentType",
+            "in": "formData",
+            "description": "Payment Type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "docStatus",
+            "in": "formData",
+            "description": "Doc Status",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "EMItenure",
+            "in": "formData",
+            "description": "EMI tenure",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "percentage",
+            "in": "formData",
+            "description": "percentage",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/updateCommisionDetails": {
+      "put": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "update merchant commision detail by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "paymentType",
+            "in": "formData",
+            "description": "Payment Type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "docStatus",
+            "in": "formData",
+            "description": "Doc Status",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "EMItenure",
+            "in": "formData",
+            "description": "EMI tenure",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "percentage",
+            "in": "formData",
+            "description": "percentage",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/getSettlementDetails/{merchantId}": {
+      "get": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Get merchant settlement cycle detail by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "path",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/merchant/addSettlementDetails": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Add merchant settlement cycle detail by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "domesticDays",
+            "in": "formData",
+            "description": "Domectic Days",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "allDaySettlement",
+            "in": "formData",
+            "description": "All Day Settlement",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "internationalDays",
+            "in": "formData",
+            "description": "International days",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/updateSettlementDetails": {
+      "put": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Update merchant settlement cycle detail by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "domesticDays",
+            "in": "formData",
+            "description": "Domectic Days",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "allDaySettlement",
+            "in": "formData",
+            "description": "All Day Settlement",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "internationalDays",
+            "in": "formData",
+            "description": "International days",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/getBankDetails/{merchantId}": {
+      "get": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Get merchant Bank detail by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "path",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/merchant/addBankDetails": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Add merchant Bank detail by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "bankName",
+            "in": "formData",
+            "description": "Bank Name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "accountNo",
+            "in": "formData",
+            "description": "Account number",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "accountType",
+            "in": "formData",
+            "description": "Account Type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "IFSCcode",
+            "in": "formData",
+            "description": "IFSC code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "description": "Status",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/updateBankDetails": {
+      "put": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "update merchant Bank detail by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "bankName",
+            "in": "formData",
+            "description": "Bank Name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "accountNo",
+            "in": "formData",
+            "description": "Account number",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "accountType",
+            "in": "formData",
+            "description": "Account Type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "IFSCcode",
+            "in": "formData",
+            "description": "IFSC code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "description": "Status",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    
+    "/merchant/getReportSetting/{merchantId}": {
+      "get": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Get merchant report setting by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "path",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/merchant/addReportSettings": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Add merchant report setting by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/merchant/updateReportSettings": {
+      "put": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Update merchant report setting by merchantId",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    
+    "/merchant/uploadDocuments": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Add merchant doccument by merchantId",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "formData",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "documents",
+            "in": "formData",
+            "description": "Doccuments object",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/merchant/updateMerchantStatus": {
+      "put": {
+        "deprecated": false,
+        "tags": [
+          "Merchant"
+        ],
+        "description": "Update Merchant status by the Merchant Chacker",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchant_id",
+            "in": "formData",
+            "description": "Merchant Id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "description": "Approved or Rejected",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  }
+}
