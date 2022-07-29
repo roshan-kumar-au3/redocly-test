@@ -38,9 +38,6 @@
       "get": {
         "description": "GENERATE SAME DAY SETTLEMENT",
         "summary": "GENERATE SAME DAY SETTLEMENT",
-        "tags": [
-          "Bnpl"
-        ],
         "parameters": [],
         "responses": {
           "200": {
