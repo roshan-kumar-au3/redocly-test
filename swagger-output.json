@@ -47,7 +47,7 @@
             "description": "Success",
             "examples": {
               "response": {
-                "value": [
+                "data": [
                   {
                     "id": "b3237483-e96e-4f3a-905c-0d9603d66c1f",
                     "created_at": "1534409264",
@@ -60,15 +60,13 @@
               }
             }
           },
-          "4xx": {
+          "400": {
             "description": "Bad Request",
             "examples": {
               "response": {
-                "value": [
-                  {
+                "error": {
                     "message": "Bad Request"
-                  }
-                ]
+                }
               }
             }
           }
