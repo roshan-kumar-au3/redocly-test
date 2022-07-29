@@ -9,7 +9,7 @@
   "basePath": "/",
   "tags": [
     {
-      "name": "User",
+      "name": "Bnpl",
       "description": "Endpoints"
     }
   ],
@@ -26,7 +26,9 @@
     }
   },
   "consumes": [
-    "application/json"
+    "application/json",
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
   ],
   "produces": [
     "application/json"
@@ -34,9 +36,14 @@
   "paths": {
     "/api/generateSameDaySettlement": {
       "get": {
-        "description": "",
+        "description": "GENERATE SAME DAY SETTLEMENT",
+        "summary": "GENERATE SAME DAY SETTLEMENT",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
       }
     },
     "/api/transaction/open/payment/process/invoice/{invoiceId}": {
