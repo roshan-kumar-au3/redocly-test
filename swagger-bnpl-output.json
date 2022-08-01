@@ -34,7 +34,7 @@
   "paths": {
     "/checkaccountstatus": {
       "post": {
-        "description": "",
+        "description": "check account status",
         "parameters": [
           {
             "name": "authorization",
@@ -62,7 +62,7 @@
     },
     "/getpaymentoptions": {
       "post": {
-        "description": "",
+        "description": "Get payment options",
         "parameters": [
           {
             "name": "authorization",
@@ -90,7 +90,7 @@
     },
     "/linkaccount": {
       "post": {
-        "description": "",
+        "description": "link account",
         "parameters": [
           {
             "name": "authorization",
@@ -118,7 +118,7 @@
     },
     "/validatelinkaccount": {
       "post": {
-        "description": "",
+        "description": "validate link account",
         "parameters": [
           {
             "name": "authorization",
@@ -146,7 +146,7 @@
     },
     "/processpayment": {
       "post": {
-        "description": "",
+        "description": "process payment",
         "parameters": [
           {
             "name": "authorization",
