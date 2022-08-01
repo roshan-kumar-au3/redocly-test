@@ -39,6 +39,12 @@
         "description": "GENERATE SAME DAY SETTLEMENT",
         "summary": "GENERATE SAME DAY SETTLEMENT",
         "parameters": [],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -63,6 +69,16 @@
               "response": {
                 "error": {
                     "message": "Bad Request"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "examples": {
+              "response": {
+                "error": {
+                    "message": "NOT FOUND"
                 }
               }
             }
